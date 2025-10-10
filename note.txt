@@ -1,0 +1,14 @@
+Saw Reverse bear trap random button press puzzle
+
+1. First all systems are down, but the clock is ticking.
+2. When the trigger(button) is pressed by the victim(willingly or not) starts the timer and 
+3. Generate the random number(with the clock timer) for the puzzle
+4. Genreate 4 numbers, between 0-9 and display them on the screen,
+5. The victim must press each button the correct ammount of times displayed by the puzzle number. b1 b2 b3 b4 -> r1 r2 r3 r4, 
+    -note that the buttons must be pressed the correct ammount of time and must be pressed in the correct order.
+    -failure to doing so will reset the puzzle(new set of numbers) and the timer will be decreased by n seconds.
+6. If the victim completes the puzzle in time, all systems are deactivated and the timer stops.
+7. If the timer reaches 0, all systems are activated and the victim is punished.
+
+
+each a part of the number is correctly done, the led representing that button will go green, showing that the part is done. All leds are by default red.
