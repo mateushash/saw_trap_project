@@ -12,3 +12,16 @@ Saw Reverse bear trap random button press puzzle
 
 
 each a part of the number is correctly done, the led representing that button will go green, showing that the part is done. All leds are by default red.
+
+E1-Erro de Pressionar o botão após ter se ativado M1
+Não pode ser ativado instantaneamente com o erro pois se sim não havera maneira do reset R1 ser ativado\
+
+G1-Guarda para garantir que não há mais de um botao sendo pressionado ao mesmo tempo
+Usar combinacao de 4 em 2 = 6, de 4 em 3 = 4 e de 4 em 4 = 1 atraves da formula c = n!/r!(n-r)!
+
+Casos de Reset: pressionar um botão fora de ordem
+Nota: Não consigo colocar Er diretamente como ativação possivel problema de timing ou sincronia do scan do programa, por isso uma variavel para cada reset
+
+Controle de Erro
+Caso qualquer um dos casos ocorra, ativar(e manter ativo) o erro
+Notar que a correção do erro se da pela correção dos casos
