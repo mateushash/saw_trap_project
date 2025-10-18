@@ -1,0 +1,20 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {chapter}{Lista de Figuras}{ii}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Introdução}{iii}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Contextualização}{iii}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Descrição}{iv}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Puzzle}{iv}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Tempo}{iv}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Erros}{iv}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Resultados}{v}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Clock}{v}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Extrator de Digitos}{v}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Gerador de Numero Aleatório}{vi}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Temporizador}{vi}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Botões}{vii}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Guarda de Pressionamento}{viii}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Guarda de Valor}{viii}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Casos de Ordem}{viii}{subsection.3.5.3}%
+\contentsline {chapter}{\numberline {4}Conclusão}{x}{chapter.4}%
+\contentsline {chapter}{Apêndice}{xi}{chapter.4}%
+\contentsline {chapter}{\numberline {A}Bibliografia}{xi}{appendix.A}%

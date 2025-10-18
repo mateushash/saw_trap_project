@@ -1,0 +1,21 @@
+/tmp/.mount_krita.pdkdmn/usr/bin/ffmpeg -hide_banner -y -y -r 24 -start_number 4 -start_number_range 1 -i /home/noob/Documents/_CURRENT_WORK/aulas7S/automacao/saw_trap_project/comics/frame%04d.png -i /home/noob/Documents/_CURRENT_WORK/aulas7S/automacao/saw_trap_project/comics/KritaTempPalettegen_%06d.png -lavfi [0:v][1:v]paletteuse=dither=sierra2_4a:diff_mode=none -f gif -loop 0 -gifflags +transdiff /home/noob/Documents/_CURRENT_WORK/aulas7S/automacao/saw_trap_project/comics/hi.gif
+=====================================================
+Input #0, image2, from '/home/noob/Documents/_CURRENT_WORK/aulas7S/automacao/saw_trap_project/comics/frame%04d.png':
+  Duration: 00:00:00.20, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgba(pc, gbr/unknown/unknown), 3307x1772 [SAR 11811:11811 DAR 3307:1772], 25 fps, 25 tbr, 25 tbn
+Input #1, image2, from '/home/noob/Documents/_CURRENT_WORK/aulas7S/automacao/saw_trap_project/comics/KritaTempPalettegen_%06d.png':
+  Duration: 00:00:00.04, start: 0.000000, bitrate: N/A
+  Stream #1:0: Video: png, rgba(pc, gbr/unknown/unknown), 16x16 [SAR 1:1 DAR 1:1], 25 fps, 25 tbr, 25 tbn
+Stream mapping:
+  Stream #0:0 (png) -> paletteuse
+  Stream #1:0 (png) -> paletteuse
+  paletteuse:default -> Stream #0:0 (gif)
+Press [q] to stop, [?] for help
+Output #0, gif, to '/home/noob/Documents/_CURRENT_WORK/aulas7S/automacao/saw_trap_project/comics/hi.gif':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: gif, pal8(pc, gbr/unknown/unknown, progressive), 3307x1772 [SAR 1:1 DAR 3307:1772], q=2-31, 200 kb/s, 24 fps, 100 tbn
+      Metadata:
+        encoder         : Lavc61.19.101 gif
+[out#0/gif @ 0x5b4be44ab1c0] video:173KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.011282%
+frame=    5 fps=0.0 q=-0.0 Lsize=     173KiB time=00:00:00.20 bitrate=6807.8kbits/s speed=0.602x    
