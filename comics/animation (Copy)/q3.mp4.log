@@ -1,20 +1,0 @@
-/tmp/.mount_krita.FHPaGc/usr/bin/ffmpeg -hide_banner -y -y -r 15 -start_number 0 -start_number_range 1 -i /home/noob/Documents/_CURRENT_WORK/aulas7S/automacao/saw_trap_project/comics/animation/hi%04d.png -vf scale=w=1344:h=720:flags=bicubic -c:v libopenh264 -b:v 5000k /home/noob/Documents/_CURRENT_WORK/aulas7S/automacao/saw_trap_project/comics/animation/q3.mp4
-=====================================================
-Input #0, image2, from '/home/noob/Documents/_CURRENT_WORK/aulas7S/automacao/saw_trap_project/comics/animation/hi%04d.png':
-  Duration: 00:00:07.04, start: 0.000000, bitrate: N/A
-  Stream #0:0: Video: png, rgba(pc, gbr/unknown/unknown), 3307x1772 [SAR 11811:11811 DAR 3307:1772], 25 fps, 25 tbr, 25 tbn
-Stream mapping:
-  Stream #0:0 -> #0:0 (png (native) -> h264 (libopenh264))
-Press [q] to stop, [?] for help
-[libopenh264 @ 0x572d113fc040] [OpenH264] this = 0x0x717230002a50, Warning:layerId(0) doesn't support profile(578), change to UNSPECIFIC profile
-[libopenh264 @ 0x572d113fc040] [OpenH264] this = 0x0x717230002a50, Warning:bEnableFrameSkip = 0,bitrate can't be controlled for RC_QUALITY_MODE,RC_BITRATE_MODE and RC_TIMESTAMP_MODE without enabling skip frame.
-Output #0, mp4, to '/home/noob/Documents/_CURRENT_WORK/aulas7S/automacao/saw_trap_project/comics/animation/q3.mp4':
-  Metadata:
-    encoder         : Lavf61.7.100
-  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, progressive), 1344x720 [SAR 49605:49616 DAR 3307:1772], q=2-31, 5000 kb/s, 15 fps, 15360 tbn
-      Metadata:
-        encoder         : Lavc61.19.101 libopenh264
-      Side data:
-        cpb: bitrate max/min/avg: 5000000/0/5000000 buffer size: 0 vbv_delay: N/A
-frame=   70 fps=0.0 q=-0.0 size=       0KiB time=00:00:04.66 bitrate=   0.1kbits/s speed=9.33x    frame=  156 fps=156 q=-0.0 size=       0KiB time=00:00:10.40 bitrate=   0.0kbits/s speed=10.4x    [out#0/mp4 @ 0x572d113fc5c0] video:251KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.603464%
-frame=  176 fps=159 q=-0.0 Lsize=     253KiB time=00:00:11.73 bitrate= 176.3kbits/s speed=10.6x    
