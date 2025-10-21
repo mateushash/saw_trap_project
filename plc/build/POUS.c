@@ -1064,9 +1064,9 @@ static inline BOOL __PUZZLE_EQ__BOOL__INT4(BOOL EN,
 
 void PUZZLE_init__(PUZZLE *data__, BOOL retain) {
   __INIT_VAR(data__->D1,1,retain)
-  __INIT_VAR(data__->D2,2,retain)
-  __INIT_VAR(data__->D3,3,retain)
-  __INIT_VAR(data__->D4,0,retain)
+  __INIT_VAR(data__->D2,1,retain)
+  __INIT_VAR(data__->D3,1,retain)
+  __INIT_VAR(data__->D4,1,retain)
   __INIT_VAR(data__->B1,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->B2,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->B3,__BOOL_LITERAL(FALSE),retain)
@@ -1296,8 +1296,8 @@ void SUB_TIMER_init__(SUB_TIMER *data__, BOOL retain) {
   __INIT_VAR(data__->ER,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->START,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->PANIC,__BOOL_LITERAL(FALSE),retain)
-  __INIT_VAR(data__->IN_MINUTOS,3,retain)
-  __INIT_VAR(data__->IN_SEGUNDOS,10,retain)
+  __INIT_VAR(data__->IN_MINUTOS,2,retain)
+  __INIT_VAR(data__->IN_SEGUNDOS,20,retain)
   __INIT_VAR(data__->R_SEGUNDOS,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->DISPLAY_M,0,retain)
   __INIT_VAR(data__->DISPLAY_S,0,retain)
@@ -1488,6 +1488,111 @@ static inline INT __LINEAR_CONGRUENTIAL_GENERATOR_ULINT_TO_INT5(BOOL EN,
   return __res;
 }
 
+static inline INT __LINEAR_CONGRUENTIAL_GENERATOR_MOD__INT__INT__INT6(BOOL EN,
+  INT IN1,
+  INT IN2,
+  LINEAR_CONGRUENTIAL_GENERATOR *data__)
+{
+  INT __res;
+  BOOL __TMP_ENO = __GET_VAR(data__->_TMP_MOD35_ENO,);
+  __res = MOD__INT__INT__INT(EN,
+    &__TMP_ENO,
+    IN1,
+    IN2);
+  __SET_VAR(,data__->_TMP_MOD35_ENO,,__TMP_ENO);
+  return __res;
+}
+
+static inline INT __LINEAR_CONGRUENTIAL_GENERATOR_DIV__INT__INT__INT7(BOOL EN,
+  INT IN1,
+  INT IN2,
+  LINEAR_CONGRUENTIAL_GENERATOR *data__)
+{
+  INT __res;
+  BOOL __TMP_ENO = __GET_VAR(data__->_TMP_DIV39_ENO,);
+  __res = DIV__INT__INT__INT(EN,
+    &__TMP_ENO,
+    IN1,
+    IN2);
+  __SET_VAR(,data__->_TMP_DIV39_ENO,,__TMP_ENO);
+  return __res;
+}
+
+static inline INT __LINEAR_CONGRUENTIAL_GENERATOR_MOD__INT__INT__INT8(BOOL EN,
+  INT IN1,
+  INT IN2,
+  LINEAR_CONGRUENTIAL_GENERATOR *data__)
+{
+  INT __res;
+  BOOL __TMP_ENO = __GET_VAR(data__->_TMP_MOD16_ENO,);
+  __res = MOD__INT__INT__INT(EN,
+    &__TMP_ENO,
+    IN1,
+    IN2);
+  __SET_VAR(,data__->_TMP_MOD16_ENO,,__TMP_ENO);
+  return __res;
+}
+
+static inline INT __LINEAR_CONGRUENTIAL_GENERATOR_DIV__INT__INT__INT9(BOOL EN,
+  INT IN1,
+  INT IN2,
+  LINEAR_CONGRUENTIAL_GENERATOR *data__)
+{
+  INT __res;
+  BOOL __TMP_ENO = __GET_VAR(data__->_TMP_DIV54_ENO,);
+  __res = DIV__INT__INT__INT(EN,
+    &__TMP_ENO,
+    IN1,
+    IN2);
+  __SET_VAR(,data__->_TMP_DIV54_ENO,,__TMP_ENO);
+  return __res;
+}
+
+static inline INT __LINEAR_CONGRUENTIAL_GENERATOR_MOD__INT__INT__INT10(BOOL EN,
+  INT IN1,
+  INT IN2,
+  LINEAR_CONGRUENTIAL_GENERATOR *data__)
+{
+  INT __res;
+  BOOL __TMP_ENO = __GET_VAR(data__->_TMP_MOD20_ENO,);
+  __res = MOD__INT__INT__INT(EN,
+    &__TMP_ENO,
+    IN1,
+    IN2);
+  __SET_VAR(,data__->_TMP_MOD20_ENO,,__TMP_ENO);
+  return __res;
+}
+
+static inline INT __LINEAR_CONGRUENTIAL_GENERATOR_DIV__INT__INT__INT11(BOOL EN,
+  INT IN1,
+  INT IN2,
+  LINEAR_CONGRUENTIAL_GENERATOR *data__)
+{
+  INT __res;
+  BOOL __TMP_ENO = __GET_VAR(data__->_TMP_DIV19_ENO,);
+  __res = DIV__INT__INT__INT(EN,
+    &__TMP_ENO,
+    IN1,
+    IN2);
+  __SET_VAR(,data__->_TMP_DIV19_ENO,,__TMP_ENO);
+  return __res;
+}
+
+static inline INT __LINEAR_CONGRUENTIAL_GENERATOR_MOD__INT__INT__INT12(BOOL EN,
+  INT IN1,
+  INT IN2,
+  LINEAR_CONGRUENTIAL_GENERATOR *data__)
+{
+  INT __res;
+  BOOL __TMP_ENO = __GET_VAR(data__->_TMP_MOD18_ENO,);
+  __res = MOD__INT__INT__INT(EN,
+    &__TMP_ENO,
+    IN1,
+    IN2);
+  __SET_VAR(,data__->_TMP_MOD18_ENO,,__TMP_ENO);
+  return __res;
+}
+
 void LINEAR_CONGRUENTIAL_GENERATOR_init__(LINEAR_CONGRUENTIAL_GENERATOR *data__, BOOL retain) {
   R_TRIG_init__(&data__->R_TRIG1,retain);
   R_TRIG_init__(&data__->R_TRIG2,retain);
@@ -1497,12 +1602,16 @@ void LINEAR_CONGRUENTIAL_GENERATOR_init__(LINEAR_CONGRUENTIAL_GENERATOR *data__,
   __INIT_VAR(data__->SET_TRAP,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->ER,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->SEED,0,retain)
-  __INIT_VAR(data__->A,0,retain)
-  __INIT_VAR(data__->C,0,retain)
-  __INIT_VAR(data__->M,0,retain)
-  __INIT_VAR(data__->M10,0,retain)
+  __INIT_VAR(data__->A,32310901,retain)
+  __INIT_VAR(data__->C,32310901,retain)
+  __INIT_VAR(data__->M,4294967296,retain)
+  __INIT_VAR(data__->M10,10000,retain)
   __INIT_VAR(data__->RANDOM_ULINT,0,retain)
   __INIT_VAR(data__->RANDOM,0,retain)
+  __INIT_VAR(data__->D1,0,retain)
+  __INIT_VAR(data__->D2,0,retain)
+  __INIT_VAR(data__->D3,0,retain)
+  __INIT_VAR(data__->D4,0,retain)
   __INIT_VAR(data__->RESET,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->CLOCK,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->_TMP_MUL1_ENO,__BOOL_LITERAL(FALSE),retain)
@@ -1516,6 +1625,20 @@ void LINEAR_CONGRUENTIAL_GENERATOR_init__(LINEAR_CONGRUENTIAL_GENERATOR *data__,
   __INIT_VAR(data__->_TMP_ULINT_TO_INT231_ENO,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->_TMP_ULINT_TO_INT231_OUT,0,retain)
   R_TRIG_init__(&data__->R_TRIG3,retain);
+  __INIT_VAR(data__->_TMP_MOD35_ENO,__BOOL_LITERAL(FALSE),retain)
+  __INIT_VAR(data__->_TMP_MOD35_OUT,0,retain)
+  __INIT_VAR(data__->_TMP_DIV39_ENO,__BOOL_LITERAL(FALSE),retain)
+  __INIT_VAR(data__->_TMP_DIV39_OUT,0,retain)
+  __INIT_VAR(data__->_TMP_MOD16_ENO,__BOOL_LITERAL(FALSE),retain)
+  __INIT_VAR(data__->_TMP_MOD16_OUT,0,retain)
+  __INIT_VAR(data__->_TMP_DIV54_ENO,__BOOL_LITERAL(FALSE),retain)
+  __INIT_VAR(data__->_TMP_DIV54_OUT,0,retain)
+  __INIT_VAR(data__->_TMP_MOD20_ENO,__BOOL_LITERAL(FALSE),retain)
+  __INIT_VAR(data__->_TMP_MOD20_OUT,0,retain)
+  __INIT_VAR(data__->_TMP_DIV19_ENO,__BOOL_LITERAL(FALSE),retain)
+  __INIT_VAR(data__->_TMP_DIV19_OUT,0,retain)
+  __INIT_VAR(data__->_TMP_MOD18_ENO,__BOOL_LITERAL(FALSE),retain)
+  __INIT_VAR(data__->_TMP_MOD18_OUT,0,retain)
 }
 
 // Code part
@@ -1555,7 +1678,9 @@ void LINEAR_CONGRUENTIAL_GENERATOR_body__(LINEAR_CONGRUENTIAL_GENERATOR *data__)
     (BOOL)__BOOL_LITERAL(TRUE),
     (ULINT)__GET_VAR(data__->RANDOM_ULINT,),
     data__));
-  __SET_VAR(data__->,RANDOM,,__GET_VAR(data__->_TMP_ULINT_TO_INT231_OUT,));
+  if (__GET_VAR(data__->_TMP_ULINT_TO_INT231_ENO,)) {
+    __SET_VAR(data__->,RANDOM,,__GET_VAR(data__->_TMP_ULINT_TO_INT231_OUT,));
+  };
   __SET_VAR(data__->TON0.,IN,,!(__GET_VAR(data__->CLOCK,)));
   __SET_VAR(data__->TON0.,PT,,__time_to_timespec(1, 500, 0, 0, 0, 0));
   TON_body__(&data__->TON0);
@@ -1571,6 +1696,53 @@ void LINEAR_CONGRUENTIAL_GENERATOR_body__(LINEAR_CONGRUENTIAL_GENERATOR *data__)
   CTU_ULINT_body__(&data__->CTU_ULINT0);
   __SET_VAR(data__->,RESET,,__GET_VAR(data__->CTU_ULINT0.Q,));
   __SET_VAR(data__->,SEED,,__GET_VAR(data__->CTU_ULINT0.CV,));
+  __SET_VAR(data__->,_TMP_MOD35_OUT,,__LINEAR_CONGRUENTIAL_GENERATOR_MOD__INT__INT__INT6(
+    (BOOL)__BOOL_LITERAL(TRUE),
+    (INT)__GET_VAR(data__->RANDOM,),
+    (INT)10,
+    data__));
+  if (__GET_VAR(data__->_TMP_MOD35_ENO,)) {
+    __SET_VAR(data__->,D4,,__GET_VAR(data__->_TMP_MOD35_OUT,));
+  };
+  __SET_VAR(data__->,_TMP_DIV39_OUT,,__LINEAR_CONGRUENTIAL_GENERATOR_DIV__INT__INT__INT7(
+    (BOOL)__GET_VAR(data__->_TMP_MOD35_ENO,),
+    (INT)__GET_VAR(data__->RANDOM,),
+    (INT)10,
+    data__));
+  __SET_VAR(data__->,_TMP_MOD16_OUT,,__LINEAR_CONGRUENTIAL_GENERATOR_MOD__INT__INT__INT8(
+    (BOOL)__GET_VAR(data__->_TMP_DIV39_ENO,),
+    (INT)__GET_VAR(data__->_TMP_DIV39_OUT,),
+    (INT)10,
+    data__));
+  if (__GET_VAR(data__->_TMP_MOD16_ENO,)) {
+    __SET_VAR(data__->,D3,,__GET_VAR(data__->_TMP_MOD16_OUT,));
+  };
+  __SET_VAR(data__->,_TMP_DIV54_OUT,,__LINEAR_CONGRUENTIAL_GENERATOR_DIV__INT__INT__INT9(
+    (BOOL)__BOOL_LITERAL(TRUE),
+    (INT)__GET_VAR(data__->RANDOM,),
+    (INT)100,
+    data__));
+  __SET_VAR(data__->,_TMP_MOD20_OUT,,__LINEAR_CONGRUENTIAL_GENERATOR_MOD__INT__INT__INT10(
+    (BOOL)__GET_VAR(data__->_TMP_DIV54_ENO,),
+    (INT)__GET_VAR(data__->_TMP_DIV54_OUT,),
+    (INT)10,
+    data__));
+  if (__GET_VAR(data__->_TMP_MOD20_ENO,)) {
+    __SET_VAR(data__->,D2,,__GET_VAR(data__->_TMP_MOD20_OUT,));
+  };
+  __SET_VAR(data__->,_TMP_DIV19_OUT,,__LINEAR_CONGRUENTIAL_GENERATOR_DIV__INT__INT__INT11(
+    (BOOL)__GET_VAR(data__->_TMP_MOD20_ENO,),
+    (INT)__GET_VAR(data__->RANDOM,),
+    (INT)1000,
+    data__));
+  __SET_VAR(data__->,_TMP_MOD18_OUT,,__LINEAR_CONGRUENTIAL_GENERATOR_MOD__INT__INT__INT12(
+    (BOOL)__GET_VAR(data__->_TMP_DIV19_ENO,),
+    (INT)__GET_VAR(data__->_TMP_DIV19_OUT,),
+    (INT)10,
+    data__));
+  if (__GET_VAR(data__->_TMP_MOD18_ENO,)) {
+    __SET_VAR(data__->,D1,,__GET_VAR(data__->_TMP_MOD18_OUT,));
+  };
 
   goto __end;
 

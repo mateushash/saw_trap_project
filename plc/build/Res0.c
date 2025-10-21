@@ -28,6 +28,8 @@ PUZZLE RES0__INSTANCE3;
 #define INSTANCE3 RES0__INSTANCE3
 SUB_TIMER RES0__INSTANCE4;
 #define INSTANCE4 RES0__INSTANCE4
+LINEAR_CONGRUENTIAL_GENERATOR RES0__INSTANCE5;
+#define INSTANCE5 RES0__INSTANCE5
 
 void RES0_init__(void) {
   BOOL retain;
@@ -40,6 +42,7 @@ void RES0_init__(void) {
   DIGIT_EXTRACTOR_init__(&INSTANCE2,retain);
   PUZZLE_init__(&INSTANCE3,retain);
   SUB_TIMER_init__(&INSTANCE4,retain);
+  LINEAR_CONGRUENTIAL_GENERATOR_init__(&INSTANCE5,retain);
 }
 
 void RES0_run__(unsigned long tick) {
@@ -59,6 +62,9 @@ void RES0_run__(unsigned long tick) {
   }
   if (TASK0) {
     SUB_TIMER_body__(&INSTANCE4);
+  }
+  if (TASK0) {
+    LINEAR_CONGRUENTIAL_GENERATOR_body__(&INSTANCE5);
   }
 }
 

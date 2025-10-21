@@ -306,9 +306,9 @@ END_PROGRAM
 PROGRAM puzzle
   VAR
     D1 : INT := 1;
-    D2 : INT := 2;
-    D3 : INT := 3;
-    D4 : INT := 0;
+    D2 : INT := 1;
+    D3 : INT := 1;
+    D4 : INT := 1;
     B1 : BOOL;
     B2 : BOOL;
     B3 : BOOL;
@@ -396,8 +396,8 @@ PROGRAM sub_timer
     Er : BOOL;
     START : BOOL;
     PANIC : BOOL;
-    IN_MINUTOS : INT := 3;
-    IN_SEGUNDOS : INT := 10;
+    IN_MINUTOS : INT := 2;
+    IN_SEGUNDOS : INT := 20;
     R_SEGUNDOS : BOOL;
     DISPLAY_M : INT;
     DISPLAY_S : INT;
@@ -472,12 +472,16 @@ PROGRAM linear_congruential_generator
     SET_TRAP : BOOL;
     Er : BOOL;
     SEED : ULINT;
-    A : ULINT;
-    C : ULINT;
-    M : ULINT;
-    M10 : ULINT;
+    A : ULINT := 32310901;
+    C : ULINT := 32310901;
+    M : ULINT := 4294967296;
+    M10 : ULINT := 10000;
     RANDOM_ULINT : ULINT;
     RANDOM : INT;
+    D1 : INT;
+    D2 : INT;
+    D3 : INT;
+    D4 : INT;
     RESET : BOOL;
     Clock : BOOL;
     _TMP_MUL1_ENO : BOOL;
@@ -491,6 +495,20 @@ PROGRAM linear_congruential_generator
     _TMP_ULINT_TO_INT231_ENO : BOOL;
     _TMP_ULINT_TO_INT231_OUT : INT;
     R_TRIG3 : R_TRIG;
+    _TMP_MOD35_ENO : BOOL;
+    _TMP_MOD35_OUT : INT;
+    _TMP_DIV39_ENO : BOOL;
+    _TMP_DIV39_OUT : INT;
+    _TMP_MOD16_ENO : BOOL;
+    _TMP_MOD16_OUT : INT;
+    _TMP_DIV54_ENO : BOOL;
+    _TMP_DIV54_OUT : INT;
+    _TMP_MOD20_ENO : BOOL;
+    _TMP_MOD20_OUT : INT;
+    _TMP_DIV19_ENO : BOOL;
+    _TMP_DIV19_OUT : INT;
+    _TMP_MOD18_ENO : BOOL;
+    _TMP_MOD18_OUT : INT;
   END_VAR
 
   R_TRIG1(CLK := SET_TRAP);
@@ -502,8 +520,10 @@ PROGRAM linear_congruential_generator
   IF _TMP_MOD9_ENO THEN
       RANDOM_ULINT := _TMP_MOD9_OUT;
   END_IF;
-  _TMP_ULINT_TO_INT231_OUT := ULINT_TO_INT(IN := RANDOM_ULINT, ENO => _TMP_ULINT_TO_INT231_ENO);
-  RANDOM := _TMP_ULINT_TO_INT231_OUT;
+  _TMP_ULINT_TO_INT231_OUT := ULINT_TO_INT(EN := TRUE, IN := RANDOM_ULINT, ENO => _TMP_ULINT_TO_INT231_ENO);
+  IF _TMP_ULINT_TO_INT231_ENO THEN
+      RANDOM := _TMP_ULINT_TO_INT231_OUT;
+  END_IF;
   TON0(IN := NOT(Clock), PT := T#500ms);
   TOF0(IN := TON0.Q, PT := T#500ms);
   Clock := TOF0.Q;
@@ -511,6 +531,25 @@ PROGRAM linear_congruential_generator
   CTU_ULINT0(CU := R_TRIG3.Q, R := RESET, PV := 9999);
   RESET := CTU_ULINT0.Q;
   SEED := CTU_ULINT0.CV;
+  _TMP_MOD35_OUT := MOD(EN := TRUE, IN1 := RANDOM, IN2 := 10, ENO => _TMP_MOD35_ENO);
+  IF _TMP_MOD35_ENO THEN
+      D4 := _TMP_MOD35_OUT;
+  END_IF;
+  _TMP_DIV39_OUT := DIV(EN := _TMP_MOD35_ENO, IN1 := RANDOM, IN2 := 10, ENO => _TMP_DIV39_ENO);
+  _TMP_MOD16_OUT := MOD(EN := _TMP_DIV39_ENO, IN1 := _TMP_DIV39_OUT, IN2 := 10, ENO => _TMP_MOD16_ENO);
+  IF _TMP_MOD16_ENO THEN
+      D3 := _TMP_MOD16_OUT;
+  END_IF;
+  _TMP_DIV54_OUT := DIV(EN := TRUE, IN1 := RANDOM, IN2 := 100, ENO => _TMP_DIV54_ENO);
+  _TMP_MOD20_OUT := MOD(EN := _TMP_DIV54_ENO, IN1 := _TMP_DIV54_OUT, IN2 := 10, ENO => _TMP_MOD20_ENO);
+  IF _TMP_MOD20_ENO THEN
+      D2 := _TMP_MOD20_OUT;
+  END_IF;
+  _TMP_DIV19_OUT := DIV(EN := _TMP_MOD20_ENO, IN1 := RANDOM, IN2 := 1000, ENO => _TMP_DIV19_ENO);
+  _TMP_MOD18_OUT := MOD(EN := _TMP_DIV19_ENO, IN1 := _TMP_DIV19_OUT, IN2 := 10, ENO => _TMP_MOD18_ENO);
+  IF _TMP_MOD18_ENO THEN
+      D1 := _TMP_MOD18_OUT;
+  END_IF;
 END_PROGRAM
 
 
@@ -524,5 +563,6 @@ CONFIGURATION Config0
     PROGRAM instance2 WITH task0 : digit_extractor;
     PROGRAM instance3 WITH task0 : puzzle;
     PROGRAM instance4 WITH task0 : sub_timer;
+    PROGRAM instance5 WITH task0 : linear_congruential_generator;
   END_RESOURCE
 END_CONFIGURATION

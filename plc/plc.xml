@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0201" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ns1="http://www.plcopen.org/xml/tc6_0201">
   <fileHeader companyName="Unknown" productName="Unnamed" productVersion="1" creationDateTime="2025-10-10T14:27:24"/>
-  <contentHeader name="Unnamed" modificationDateTime="2025-10-16T17:43:39">
+  <contentHeader name="Unnamed" modificationDateTime="2025-10-21T09:18:18">
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
@@ -1432,6 +1432,8 @@ Sensor que inicia a armadilha e botão de panico para desligar todo o sistema]]>
               <position x="30" y="280"/>
               <content>
                 <xhtml:p><![CDATA[LOGICA TEMPORIZADDOR
+T_x = C_t + R
+R = T_x - C_t
 Toda Vez que um erro ocorre (Er) deve-se remover 10s do Temporizador. Note que o programa usa um cronometro para se chegar ao tempo inbutido atraves das variaveis de entrada para minutos e segundos, porem o display exibe os valores como um temporizador. Para isso, o tempo total e convertido em um unico TIMER e depois manipulado para ser exibido como um temporizador.
 A conversao para um TIMER total impede que se tenha valores negativos para segundos com a subtração por erro.
 Ah mais não vai fica abaixo de zero quando ele erra os segundos forem menores que 10?
@@ -7242,7 +7244,7 @@ DISPLAY1: Display do Temporizador]]></xhtml:p>
                 <INT/>
               </type>
               <initialValue>
-                <simpleValue value="2"/>
+                <simpleValue value="1"/>
               </initialValue>
             </variable>
             <variable name="D3">
@@ -7250,7 +7252,7 @@ DISPLAY1: Display do Temporizador]]></xhtml:p>
                 <INT/>
               </type>
               <initialValue>
-                <simpleValue value="3"/>
+                <simpleValue value="1"/>
               </initialValue>
             </variable>
             <variable name="D4">
@@ -7258,7 +7260,7 @@ DISPLAY1: Display do Temporizador]]></xhtml:p>
                 <INT/>
               </type>
               <initialValue>
-                <simpleValue value="0"/>
+                <simpleValue value="1"/>
               </initialValue>
             </variable>
             <variable name="B1">
@@ -8415,11 +8417,12 @@ Usar combinacao de 4 em 2 = 6, de 4 em 3 = 4 e de 4 em 4 = 1 atraves da formula 
               </connectionPointOut>
               <variable>B1</variable>
             </contact>
-            <comment localId="62" height="80" width="1160">
+            <comment localId="62" height="110" width="1160">
               <position x="60" y="2140"/>
               <content>
                 <xhtml:p><![CDATA[Casos de Ordem: pressionar um botão fora de ordem
-Nota: Não consigo colocar Er diretamente como ativação possivel problema de timing ou sincronia do scan do programa, por isso uma variavel para cada reset]]></xhtml:p>
+Nota: Não consigo colocar Er diretamente como ativação possivel problema de timing ou sincronia do scan do programa, por isso uma variavel para cada reset
+TESTAR AKI]]></xhtml:p>
               </content>
             </comment>
             <contact localId="63" negated="false" width="21" height="20">
@@ -10587,7 +10590,7 @@ Qualquer valor 0 em um dos digitos automaticamente ativa a memoria correspondent
                 <INT/>
               </type>
               <initialValue>
-                <simpleValue value="3"/>
+                <simpleValue value="2"/>
               </initialValue>
             </variable>
             <variable name="IN_SEGUNDOS">
@@ -10595,7 +10598,7 @@ Qualquer valor 0 em um dos digitos automaticamente ativa a memoria correspondent
                 <INT/>
               </type>
               <initialValue>
-                <simpleValue value="10"/>
+                <simpleValue value="20"/>
               </initialValue>
             </variable>
             <variable name="R_SEGUNDOS">
@@ -11736,21 +11739,33 @@ Qualquer valor 0 em um dos digitos automaticamente ativa a memoria correspondent
               <type>
                 <ULINT/>
               </type>
+              <initialValue>
+                <simpleValue value="32310901"/>
+              </initialValue>
             </variable>
             <variable name="C">
               <type>
                 <ULINT/>
               </type>
+              <initialValue>
+                <simpleValue value="32310901"/>
+              </initialValue>
             </variable>
             <variable name="M">
               <type>
                 <ULINT/>
               </type>
+              <initialValue>
+                <simpleValue value="4294967296"/>
+              </initialValue>
             </variable>
             <variable name="M10">
               <type>
                 <ULINT/>
               </type>
+              <initialValue>
+                <simpleValue value="10000"/>
+              </initialValue>
             </variable>
             <variable name="RANDOM_ULINT">
               <type>
@@ -11758,6 +11773,26 @@ Qualquer valor 0 em um dos digitos automaticamente ativa a memoria correspondent
               </type>
             </variable>
             <variable name="RANDOM">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="D1">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="D2">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="D3">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="D4">
               <type>
                 <INT/>
               </type>
@@ -12079,6 +12114,10 @@ Qualquer valor 0 em um dos digitos automaticamente ativa a memoria correspondent
                 <variable formalParameter="EN">
                   <connectionPointIn>
                     <relPosition x="0" y="30"/>
+                    <connection refLocalId="235">
+                      <position x="380" y="780"/>
+                      <position x="20" y="780"/>
+                    </connection>
                   </connectionPointIn>
                 </variable>
                 <variable formalParameter="IN">
@@ -12086,7 +12125,9 @@ Qualquer valor 0 em um dos digitos automaticamente ativa a memoria correspondent
                     <relPosition x="0" y="50"/>
                     <connection refLocalId="233">
                       <position x="380" y="800"/>
-                      <position x="270" y="800"/>
+                      <position x="325" y="800"/>
+                      <position x="325" y="820"/>
+                      <position x="280" y="820"/>
                     </connection>
                   </connectionPointIn>
                 </variable>
@@ -12106,7 +12147,7 @@ Qualquer valor 0 em um dos digitos automaticamente ativa a memoria correspondent
               </outputVariables>
             </block>
             <inVariable localId="233" width="120" height="30" negated="false" executionOrderId="0">
-              <position x="150" y="780"/>
+              <position x="160" y="800"/>
               <connectionPointOut>
                 <relPosition x="120" y="20"/>
               </connectionPointOut>
@@ -12124,11 +12165,13 @@ Qualquer valor 0 em um dos digitos automaticamente ativa a memoria correspondent
               <expression>RANDOM_ULINT</expression>
             </outVariable>
             <outVariable localId="232" width="120" height="30" negated="false" executionOrderId="0">
-              <position x="600" y="780"/>
+              <position x="590" y="800"/>
               <connectionPointIn>
                 <relPosition x="0" y="20"/>
                 <connection refLocalId="231" formalParameter="OUT">
-                  <position x="600" y="800"/>
+                  <position x="590" y="820"/>
+                  <position x="550" y="820"/>
+                  <position x="550" y="800"/>
                   <position x="500" y="800"/>
                 </connection>
               </connectionPointIn>
@@ -12376,6 +12419,10 @@ Deve gerar um Random quando a armadilha for ativada pela primeira vez e sempre q
               </connectionPointIn>
               <connectionPointIn>
                 <relPosition x="0" y="780"/>
+                <connection refLocalId="231" formalParameter="ENO">
+                  <position x="1320" y="780"/>
+                  <position x="500" y="780"/>
+                </connection>
               </connectionPointIn>
               <connectionPointIn>
                 <relPosition x="0" y="820"/>
@@ -12394,6 +12441,10 @@ Deve gerar um Random quando a armadilha for ativada pela primeira vez e sempre q
               </connectionPointIn>
               <connectionPointIn>
                 <relPosition x="0" y="1020"/>
+                <connection refLocalId="16" formalParameter="ENO">
+                  <position x="1320" y="1020"/>
+                  <position x="820" y="1020"/>
+                </connection>
               </connectionPointIn>
               <connectionPointIn>
                 <relPosition x="0" y="1060"/>
@@ -12406,6 +12457,10 @@ Deve gerar um Random quando a armadilha for ativada pela primeira vez e sempre q
               </connectionPointIn>
               <connectionPointIn>
                 <relPosition x="0" y="1180"/>
+                <connection refLocalId="18" formalParameter="ENO">
+                  <position x="1320" y="1180"/>
+                  <position x="1000" y="1180"/>
+                </connection>
               </connectionPointIn>
               <connectionPointIn>
                 <relPosition x="0" y="1220"/>
@@ -12685,6 +12740,458 @@ Deve gerar um Random quando a armadilha for ativada pela primeira vez e sempre q
 pulsos do clock de 1s]]></xhtml:p>
               </content>
             </comment>
+            <block localId="16" typeName="MOD" width="70" height="80" executionOrderId="0">
+              <position x="750" y="990"/>
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <relPosition x="0" y="30"/>
+                    <connection refLocalId="39" formalParameter="ENO">
+                      <position x="750" y="1020"/>
+                      <position x="670" y="1020"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN1">
+                  <connectionPointIn>
+                    <relPosition x="0" y="50"/>
+                    <connection refLocalId="39" formalParameter="OUT">
+                      <position x="750" y="1040"/>
+                      <position x="670" y="1040"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN2">
+                  <connectionPointIn>
+                    <relPosition x="0" y="70"/>
+                    <connection refLocalId="17">
+                      <position x="750" y="1060"/>
+                      <position x="720" y="1060"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables/>
+              <outputVariables>
+                <variable formalParameter="ENO">
+                  <connectionPointOut>
+                    <relPosition x="70" y="30"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT">
+                  <connectionPointOut>
+                    <relPosition x="70" y="50"/>
+                  </connectionPointOut>
+                </variable>
+              </outputVariables>
+            </block>
+            <block localId="39" typeName="DIV" width="130" height="80" executionOrderId="0">
+              <position x="540" y="990"/>
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <relPosition x="0" y="30"/>
+                    <connection refLocalId="35" formalParameter="ENO">
+                      <position x="540" y="1020"/>
+                      <position x="380" y="1020"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN1">
+                  <connectionPointIn>
+                    <relPosition x="0" y="50"/>
+                    <connection refLocalId="40">
+                      <position x="540" y="1040"/>
+                      <position x="490" y="1040"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN2">
+                  <connectionPointIn>
+                    <relPosition x="0" y="70"/>
+                    <connection refLocalId="52">
+                      <position x="540" y="1060"/>
+                      <position x="515" y="1060"/>
+                      <position x="515" y="1080"/>
+                      <position x="490" y="1080"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables/>
+              <outputVariables>
+                <variable formalParameter="ENO">
+                  <connectionPointOut>
+                    <relPosition x="130" y="30"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT">
+                  <connectionPointOut>
+                    <relPosition x="130" y="50"/>
+                  </connectionPointOut>
+                </variable>
+              </outputVariables>
+            </block>
+            <block localId="35" typeName="MOD" width="70" height="80" executionOrderId="0">
+              <position x="310" y="990"/>
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <relPosition x="0" y="30"/>
+                    <connection refLocalId="235">
+                      <position x="310" y="1020"/>
+                      <position x="20" y="1020"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN1">
+                  <connectionPointIn>
+                    <relPosition x="0" y="50"/>
+                    <connection refLocalId="36">
+                      <position x="310" y="1040"/>
+                      <position x="260" y="1040"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN2">
+                  <connectionPointIn>
+                    <relPosition x="0" y="70"/>
+                    <connection refLocalId="51">
+                      <position x="310" y="1060"/>
+                      <position x="285" y="1060"/>
+                      <position x="285" y="1080"/>
+                      <position x="260" y="1080"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables/>
+              <outputVariables>
+                <variable formalParameter="ENO">
+                  <connectionPointOut>
+                    <relPosition x="70" y="30"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT">
+                  <connectionPointOut>
+                    <relPosition x="70" y="50"/>
+                  </connectionPointOut>
+                </variable>
+              </outputVariables>
+            </block>
+            <inVariable localId="36" width="70" height="30" negated="false" executionOrderId="0">
+              <position x="190" y="1030"/>
+              <connectionPointOut>
+                <relPosition x="70" y="10"/>
+              </connectionPointOut>
+              <expression>RANDOM</expression>
+            </inVariable>
+            <inVariable localId="51" width="30" height="30" negated="false" executionOrderId="0">
+              <position x="230" y="1060"/>
+              <connectionPointOut>
+                <relPosition x="30" y="20"/>
+              </connectionPointOut>
+              <expression>10</expression>
+            </inVariable>
+            <inVariable localId="40" width="70" height="30" negated="false" executionOrderId="0">
+              <position x="420" y="1030"/>
+              <connectionPointOut>
+                <relPosition x="70" y="10"/>
+              </connectionPointOut>
+              <expression>RANDOM</expression>
+            </inVariable>
+            <inVariable localId="52" width="30" height="30" negated="false" executionOrderId="0">
+              <position x="460" y="1060"/>
+              <connectionPointOut>
+                <relPosition x="30" y="20"/>
+              </connectionPointOut>
+              <expression>10</expression>
+            </inVariable>
+            <inVariable localId="17" width="30" height="30" negated="false" executionOrderId="0">
+              <position x="690" y="1050"/>
+              <connectionPointOut>
+                <relPosition x="30" y="10"/>
+              </connectionPointOut>
+              <expression>10</expression>
+            </inVariable>
+            <block localId="18" typeName="MOD" width="70" height="80" executionOrderId="0">
+              <position x="930" y="1150"/>
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <relPosition x="0" y="30"/>
+                    <connection refLocalId="19" formalParameter="ENO">
+                      <position x="930" y="1180"/>
+                      <position x="850" y="1180"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN1">
+                  <connectionPointIn>
+                    <relPosition x="0" y="50"/>
+                    <connection refLocalId="19" formalParameter="OUT">
+                      <position x="930" y="1200"/>
+                      <position x="850" y="1200"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN2">
+                  <connectionPointIn>
+                    <relPosition x="0" y="70"/>
+                    <connection refLocalId="33">
+                      <position x="930" y="1220"/>
+                      <position x="920" y="1220"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables/>
+              <outputVariables>
+                <variable formalParameter="ENO">
+                  <connectionPointOut>
+                    <relPosition x="70" y="30"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT">
+                  <connectionPointOut>
+                    <relPosition x="70" y="50"/>
+                  </connectionPointOut>
+                </variable>
+              </outputVariables>
+            </block>
+            <block localId="19" typeName="DIV" width="130" height="80" executionOrderId="0">
+              <position x="720" y="1150"/>
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <relPosition x="0" y="30"/>
+                    <connection refLocalId="20" formalParameter="ENO">
+                      <position x="720" y="1180"/>
+                      <position x="560" y="1180"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN1">
+                  <connectionPointIn>
+                    <relPosition x="0" y="50"/>
+                    <connection refLocalId="27">
+                      <position x="720" y="1200"/>
+                      <position x="690" y="1200"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN2">
+                  <connectionPointIn>
+                    <relPosition x="0" y="70"/>
+                    <connection refLocalId="32">
+                      <position x="720" y="1220"/>
+                      <position x="700" y="1220"/>
+                      <position x="700" y="1240"/>
+                      <position x="690" y="1240"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables/>
+              <outputVariables>
+                <variable formalParameter="ENO">
+                  <connectionPointOut>
+                    <relPosition x="130" y="30"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT">
+                  <connectionPointOut>
+                    <relPosition x="130" y="50"/>
+                  </connectionPointOut>
+                </variable>
+              </outputVariables>
+            </block>
+            <block localId="20" typeName="MOD" width="70" height="80" executionOrderId="0">
+              <position x="490" y="1150"/>
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <relPosition x="0" y="30"/>
+                    <connection refLocalId="54" formalParameter="ENO">
+                      <position x="490" y="1180"/>
+                      <position x="370" y="1180"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN1">
+                  <connectionPointIn>
+                    <relPosition x="0" y="50"/>
+                    <connection refLocalId="54" formalParameter="OUT">
+                      <position x="490" y="1200"/>
+                      <position x="370" y="1200"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN2">
+                  <connectionPointIn>
+                    <relPosition x="0" y="70"/>
+                    <connection refLocalId="22">
+                      <position x="490" y="1220"/>
+                      <position x="480" y="1220"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables/>
+              <outputVariables>
+                <variable formalParameter="ENO">
+                  <connectionPointOut>
+                    <relPosition x="70" y="30"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT">
+                  <connectionPointOut>
+                    <relPosition x="70" y="50"/>
+                  </connectionPointOut>
+                </variable>
+              </outputVariables>
+            </block>
+            <block localId="54" typeName="DIV" width="70" height="80" executionOrderId="0">
+              <position x="300" y="1150"/>
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <relPosition x="0" y="30"/>
+                    <connection refLocalId="235">
+                      <position x="300" y="1180"/>
+                      <position x="20" y="1180"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN1">
+                  <connectionPointIn>
+                    <relPosition x="0" y="50"/>
+                    <connection refLocalId="21">
+                      <position x="300" y="1200"/>
+                      <position x="260" y="1200"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="IN2">
+                  <connectionPointIn>
+                    <relPosition x="0" y="70"/>
+                    <connection refLocalId="55">
+                      <position x="300" y="1220"/>
+                      <position x="280" y="1220"/>
+                      <position x="280" y="1240"/>
+                      <position x="260" y="1240"/>
+                    </connection>
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables/>
+              <outputVariables>
+                <variable formalParameter="ENO">
+                  <connectionPointOut>
+                    <relPosition x="70" y="30"/>
+                  </connectionPointOut>
+                </variable>
+                <variable formalParameter="OUT">
+                  <connectionPointOut>
+                    <relPosition x="70" y="50"/>
+                  </connectionPointOut>
+                </variable>
+              </outputVariables>
+            </block>
+            <inVariable localId="21" width="70" height="30" negated="false" executionOrderId="0">
+              <position x="190" y="1190"/>
+              <connectionPointOut>
+                <relPosition x="70" y="10"/>
+              </connectionPointOut>
+              <expression>RANDOM</expression>
+            </inVariable>
+            <inVariable localId="55" width="40" height="30" negated="false" executionOrderId="0">
+              <position x="220" y="1220"/>
+              <connectionPointOut>
+                <relPosition x="40" y="20"/>
+              </connectionPointOut>
+              <expression>100</expression>
+            </inVariable>
+            <inVariable localId="22" width="30" height="30" negated="false" executionOrderId="0">
+              <position x="450" y="1210"/>
+              <connectionPointOut>
+                <relPosition x="30" y="10"/>
+              </connectionPointOut>
+              <expression>10</expression>
+            </inVariable>
+            <inVariable localId="27" width="70" height="30" negated="false" executionOrderId="0">
+              <position x="620" y="1190"/>
+              <connectionPointOut>
+                <relPosition x="70" y="10"/>
+              </connectionPointOut>
+              <expression>RANDOM</expression>
+            </inVariable>
+            <inVariable localId="32" width="50" height="30" negated="false" executionOrderId="0">
+              <position x="640" y="1220"/>
+              <connectionPointOut>
+                <relPosition x="50" y="20"/>
+              </connectionPointOut>
+              <expression>1000</expression>
+            </inVariable>
+            <inVariable localId="33" width="30" height="30" negated="false" executionOrderId="0">
+              <position x="890" y="1210"/>
+              <connectionPointOut>
+                <relPosition x="30" y="10"/>
+              </connectionPointOut>
+              <expression>10</expression>
+            </inVariable>
+            <outVariable localId="38" width="30" height="30" negated="false" executionOrderId="0">
+              <position x="420" y="960"/>
+              <connectionPointIn>
+                <relPosition x="0" y="20"/>
+                <connection refLocalId="35" formalParameter="OUT">
+                  <position x="420" y="980"/>
+                  <position x="400" y="980"/>
+                  <position x="400" y="1040"/>
+                  <position x="380" y="1040"/>
+                </connection>
+              </connectionPointIn>
+              <expression>D4</expression>
+            </outVariable>
+            <outVariable localId="34" width="30" height="30" negated="false" executionOrderId="0">
+              <position x="840" y="970"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="16" formalParameter="OUT">
+                  <position x="840" y="980"/>
+                  <position x="830" y="980"/>
+                  <position x="830" y="1040"/>
+                  <position x="820" y="1040"/>
+                </connection>
+              </connectionPointIn>
+              <expression>D3</expression>
+            </outVariable>
+            <outVariable localId="37" width="30" height="30" negated="false" executionOrderId="0">
+              <position x="600" y="1120"/>
+              <connectionPointIn>
+                <relPosition x="0" y="20"/>
+                <connection refLocalId="20" formalParameter="OUT">
+                  <position x="600" y="1140"/>
+                  <position x="580" y="1140"/>
+                  <position x="580" y="1200"/>
+                  <position x="560" y="1200"/>
+                </connection>
+              </connectionPointIn>
+              <expression>D2</expression>
+            </outVariable>
+            <outVariable localId="14" width="30" height="30" negated="false" executionOrderId="0">
+              <position x="1020" y="1130"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="18" formalParameter="OUT">
+                  <position x="1020" y="1140"/>
+                  <position x="1010" y="1140"/>
+                  <position x="1010" y="1200"/>
+                  <position x="1000" y="1200"/>
+                </connection>
+              </connectionPointIn>
+              <expression>D1</expression>
+            </outVariable>
           </LD>
         </body>
       </pou>
@@ -12700,6 +13207,7 @@ pulsos do clock de 1s]]></xhtml:p>
             <pouInstance name="instance2" typeName="digit_extractor"/>
             <pouInstance name="instance3" typeName="puzzle"/>
             <pouInstance name="instance4" typeName="sub_timer"/>
+            <pouInstance name="instance5" typeName="linear_congruential_generator"/>
           </task>
           <task name="task1" priority="0" interval="T#1s"/>
         </resource>
