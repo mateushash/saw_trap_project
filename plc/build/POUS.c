@@ -572,7 +572,7 @@ void RD_SEQ_RBEAR_TRAP_body__(RD_SEQ_RBEAR_TRAP *data__) {
   if (__GET_VAR(data__->_TMP_MOD19_ENO,)) {
     __SET_VAR(data__->,D1,,__GET_VAR(data__->_TMP_MOD19_OUT,));
   };
-  __SET_VAR(data__->R_TRIG5.,CLK,,(__GET_VAR(data__->SET_TRAP,) && !(__GET_VAR(data__->CLOCK,))));
+  __SET_VAR(data__->R_TRIG5.,CLK,,((!(__GET_VAR(data__->RELEASE_TRAP,)) && __GET_VAR(data__->SET_TRAP,)) && !(__GET_VAR(data__->CLOCK,))));
   R_TRIG_body__(&data__->R_TRIG5);
   __SET_VAR(data__->CTU0.,CU,,__GET_VAR(data__->R_TRIG5.Q,));
   __SET_VAR(data__->CTU0.,PV,,__GET_VAR(data__->TIMER,));

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0201" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ns1="http://www.plcopen.org/xml/tc6_0201">
   <fileHeader companyName="Unknown" productName="Unnamed" productVersion="1" creationDateTime="2025-10-10T14:27:24"/>
-  <contentHeader name="Unnamed" modificationDateTime="2025-11-03T16:31:09">
+  <contentHeader name="Unnamed" modificationDateTime="2025-11-03T16:46:36">
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
@@ -1089,9 +1089,9 @@ Apenas se pega o resto da divisao para encontrar cada um dos digitos
                 <variable formalParameter="CU" edge="rising">
                   <connectionPointIn>
                     <relPosition x="0" y="30"/>
-                    <connection refLocalId="59">
+                    <connection refLocalId="268">
                       <position x="620" y="880"/>
-                      <position x="421" y="880"/>
+                      <position x="540" y="880"/>
                     </connection>
                   </connectionPointIn>
                 </variable>
@@ -6143,7 +6143,7 @@ DISPLAY1: Display do Temporizador]]></xhtml:p>
               </connectionPointOut>
               <expression>T#500ms</expression>
             </inVariable>
-            <contact localId="267" negated="false" width="20" height="20">
+            <contact localId="267" negated="false" width="21" height="20">
               <position x="760" y="870"/>
               <connectionPointIn>
                 <relPosition x="0" y="10"/>
@@ -6153,9 +6153,23 @@ DISPLAY1: Display do Temporizador]]></xhtml:p>
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
-                <relPosition x="20" y="10"/>
+                <relPosition x="21" y="10"/>
               </connectionPointOut>
               <variable>SET_TRAP</variable>
+            </contact>
+            <contact localId="268" negated="true" width="21" height="20">
+              <position x="520" y="870"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="59">
+                  <position x="520" y="880"/>
+                  <position x="421" y="880"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="21" y="10"/>
+              </connectionPointOut>
+              <variable>RELEASE_TRAP</variable>
             </contact>
           </LD>
         </body>
