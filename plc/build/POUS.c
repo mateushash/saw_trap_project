@@ -453,6 +453,7 @@ void RD_SEQ_RBEAR_TRAP_init__(RD_SEQ_RBEAR_TRAP *data__, BOOL retain) {
   R_TRIG_init__(&data__->R_TRIG2,retain);
   R_TRIG_init__(&data__->R_TRIG3,retain);
   R_TRIG_init__(&data__->R_TRIG0,retain);
+  TON_init__(&data__->TON1,retain);
   R_TRIG_init__(&data__->R_TRIG4,retain);
   __INIT_VAR(data__->_TMP_MOD35_ENO,__BOOL_LITERAL(FALSE),retain)
   __INIT_VAR(data__->_TMP_MOD35_OUT,0,retain)
@@ -576,7 +577,7 @@ void RD_SEQ_RBEAR_TRAP_body__(RD_SEQ_RBEAR_TRAP *data__) {
   __SET_VAR(data__->CTU0.,CU,,__GET_VAR(data__->R_TRIG5.Q,));
   __SET_VAR(data__->CTU0.,PV,,__GET_VAR(data__->TIMER,));
   CTU_body__(&data__->CTU0);
-  __SET_VAR(data__->,ACTIVATE_TRAP,,(!(__GET_VAR(data__->RELEASE_TRAP,)) && __GET_VAR(data__->CTU0.Q,)));
+  __SET_VAR(data__->,ACTIVATE_TRAP,,((!(__GET_VAR(data__->RELEASE_TRAP,)) && __GET_VAR(data__->SET_TRAP,)) && __GET_VAR(data__->CTU0.Q,)));
   __SET_VAR(data__->R_TRIG1.,CLK,,__GET_VAR(data__->SET_TRAP,));
   R_TRIG_body__(&data__->R_TRIG1);
   __SET_VAR(data__->R_TRIG2.,CLK,,__GET_VAR(data__->ER,));
@@ -688,7 +689,10 @@ void RD_SEQ_RBEAR_TRAP_body__(RD_SEQ_RBEAR_TRAP *data__) {
     data__));
   __SET_VAR(data__->,G4,,__GET_VAR(data__->_TMP_EQ134_OUT,));
   __SET_VAR(data__->,ER,,((((((((__GET_VAR(data__->G0,) || __GET_VAR(data__->O1,)) || __GET_VAR(data__->O2,)) || __GET_VAR(data__->O3,)) || __GET_VAR(data__->O4,)) || __GET_VAR(data__->R1,)) || __GET_VAR(data__->R2,)) || __GET_VAR(data__->R3,)) || __GET_VAR(data__->R4,)));
-  __SET_VAR(data__->,RELEASE_TRAP,,(__GET_VAR(data__->RELEASE_TRAP,) || (((((__GET_VAR(data__->M4,) && __GET_VAR(data__->M3,)) && __GET_VAR(data__->M2,)) && __GET_VAR(data__->M1,)) && !(__GET_VAR(data__->ACTIVATE_TRAP,))) && __GET_VAR(data__->SET_TRAP,))));
+  __SET_VAR(data__->TON1.,IN,,(!(__GET_VAR(data__->ACTIVATE_TRAP,)) && __GET_VAR(data__->SET_TRAP,)));
+  __SET_VAR(data__->TON1.,PT,,__time_to_timespec(1, 500, 0, 0, 0, 0));
+  TON_body__(&data__->TON1);
+  __SET_VAR(data__->,RELEASE_TRAP,,(__GET_VAR(data__->RELEASE_TRAP,) || ((((__GET_VAR(data__->M4,) && __GET_VAR(data__->M3,)) && __GET_VAR(data__->M2,)) && __GET_VAR(data__->M1,)) && __GET_VAR(data__->TON1.Q,))));
   __SET_VAR(data__->,_TMP_ULINT_TO_INT231_OUT,,__RD_SEQ_RBEAR_TRAP_ULINT_TO_INT16(
     (BOOL)__BOOL_LITERAL(TRUE),
     (ULINT)__GET_VAR(data__->RANDOM_ULINT,),
